@@ -1,0 +1,21 @@
+<h1 class="pb-4">Explore Mood Categories</h1>
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Explore Mood Categories</li>
+    </ol>
+  </nav>
+<section class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 mb-4">
+<% if(categories !='') { %>
+    <% categories.forEach(function(category, i){ %>
+        <!-- href creates a route for the categories to provide the option display all the files or just one of the files -->
+<a href="/categories/<%- category.name %>" class="col text-center category_link">
+<section class="category__img shadow">
+  <img src="img/<%- category.image %>" alt="<%- category.name %>" loading="lazy" />
+</section>
+<section class="pt-1"><%- category.name %></section>
+</a>
+<% }) %>
+<% } %>
+</section>
