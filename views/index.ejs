@@ -66,28 +66,73 @@
   </section>
 
   <section class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-    <a href="/mood/#" class="col text-center category_link">
+   
+   <% if(feelings !='') { %>
+    <% feelings.LatestEmotion.forEach(function(emotion, index){ %>
+    <a href="/emotion/<%= emotion._id %>" class="col text-center category_link">
       <section class="category__img category__img--large shadow">
-        <img src="img/confused.jpg" alt="Confused Moods" loading="lazy" />
+        <img src="/uploads/<%= emotion.image %>" alt="<%= emotion.name %>" loading="lazy" />
       </section>
-      <section class="pt-1">Confused Mood</section>
+      <section class="pt-1"><%= emotion.name %></section>
     </a>
-    <a href="/mood/#" class="col text-center category_link">
-      <section class="category__img category__img--large shadow">
-        <img src="img/anger.jpg" alt="Angry Moods" loading="lazy" />
-      </section>
-      <section class="pt-1">Angry Mood</section>
-    </a>
-    <a href="/mood/#" class="col text-center category_link">
-      <section class="category__img category__img--large shadow">
-        <img src="img/happy.jpg" alt="Happy Moods" loading="lazy" />
-      </section>
-      <section class="pt-1">Happy Mood</section>
-    </a>
+
+    <% }) %>
+    <% } %>
   </section>
 </section>
 
 <!-- latest end -->
+
+
+<!-- Happy start -->
+<section class="pb-4 pt-4">
+    <section class="d-flex mb-2 align-items-center">
+      <h2>Happy Emotions</h2>
+      <a href="/categories/Happy" class="ms-auto">View More</a>
+    </section>
+  
+    <section class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+     <!-- covers if the object is undefined or not there -->
+     <% if(typeof feelings.happy !='undefined' && feelings.happy.length > 0) { %>
+      <% feelings.happy.forEach(function(emotion, index){ %>
+      <a href="/emotion/<%= emotion._id %>" class="col text-center category_link">
+        <section class="category__img category__img--large shadow">
+          <img src="/uploads/<%= emotion.image %>" alt="<%= emotion.name %>" loading="lazy" />
+        </section>
+        <section class="pt-1"><%= emotion.name %></section>
+      </a>
+  
+      <% }) %>
+      <% } %>
+    </section>
+  </section>
+  
+  <!-- Happy end -->
+  <!-- Angry start -->
+<section class="pb-4 pt-4">
+    <section class="d-flex mb-2 align-items-center">
+      <h2>Angry Emotions</h2>
+      <a href="/categories/Happy" class="ms-auto">View More</a>
+    </section>
+  
+    <section class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+     <!-- covers if the object is undefined or not there -->
+     <% if(typeof feelings.angry !='undefined' && feelings.angry.length > 0) { %>
+      <% feelings.angry.forEach(function(emotion, index){ %>
+      <a href="/emotion/<%= emotion._id %>" class="col text-center category_link">
+        <section class="category__img category__img--large shadow">
+          <img src="/uploads/<%= emotion.image %>" alt="<%= emotion.name %>" loading="lazy" />
+        </section>
+        <section class="pt-1"><%= emotion.name %></section>
+      </a>
+  
+      <% }) %>
+      <% } %>
+    </section>
+  </section>
+  
+  <!-- Angry end -->
+
 <!-- Submit - start -->
 
 <section class="px-4 py-5 my-5 text-center">
@@ -112,3 +157,5 @@
   </section>
 </section>
 <!-- Submit - end-->
+
+

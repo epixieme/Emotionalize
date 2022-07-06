@@ -18,7 +18,12 @@ exports.homepage = async (req, res) => { // renders the page from the emotionsRo
   try {
     const limitNumber = 5;
     const categories = await Category.find({}).limit(limitNumber);// search model schema in models/Category.js
-    res.render("index", { title: "Emotions App - Homepage", categories }); // render homepage title and categories
+    const LatestEmotion = await Emotion.find().sort({_id:-1}).limit(limitNumber);// sorted to show latest ids and limited to what ever is specified in limitNumber
+    const happy = await Emotion.find({'category':'Happy'}).limit(limitNumber);
+    const angry = await Emotion.find({'category':'Angry'}).limit(limitNumber);
+    const sad = await Emotion.find({'category':'Sad'}).limit(limitNumber);
+    const feelings = { LatestEmotion,happy,angry,sad }; //put latestEmotion and individual emotions into an object to use in EJS
+    res.render("index", { title: "Emotions App - Homepage", categories, feelings }); // render homepage title and categories
   } catch (error) {
     errorHandling(res,error)
   }
@@ -32,7 +37,7 @@ exports.homepage = async (req, res) => { // renders the page from the emotionsRo
     try {
       const limitNumber = 20;
       const categories = await Category.find({}).limit(limitNumber);// search model schema in models/Category.js
-      res.render("categories", { title: "Emotions App - Categories", categories }); // render homepage title and categories
+    res.render("categories", { title: "Emotions App - Categories", categories}); // render homepage title, categories,feelings to category ejs
     } catch (error) {
         errorHandling(res,error)
     }
@@ -48,19 +53,19 @@ exports.homepage = async (req, res) => { // renders the page from the emotionsRo
 // async function insertDummyEmotionData(){
 //     try{
 //         await Emotion.insertMany([
-//             {"name":"feeling angry at everyone", 
-//             "description":"feeling like I might explode, raging inferno, wanting to snap at people",
+//          {"name":"Got Promoted",
+//          "description":"Feeling so happy to be recognised",
 //             "email":"unreal@unreal.co.uk",
-//             "feelings":["blame", "explosive", "rage"],
-//             "category":"Angry",
-//             "image":"anger.jpg"
-//             },
-//             {"name":"feeling Happy with life", 
-//             "description":"feeling happy with my job and family",
-//             "email":"unreal@unreal.co.uk",
-//             "feelings":["joy", "fullfilled", "complete"],
+//             "feelings":["content", "fullfilled", "complete"],
 //             "category":"Happy",
 //             "image":"happy.jpg"
+//             },
+//             {"name":"I lost my job", 
+//             "description":"Lost my job and now feel sad",
+//             "email":"unreal@unreal.co.uk",
+//             "feelings":["depressed", "tearful", "alone"],
+//             "category":"Sad",
+//             "image":"sad.jpg"
 //             }
 //             ]) // wait until Category is aquired
 
