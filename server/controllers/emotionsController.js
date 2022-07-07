@@ -44,6 +44,22 @@ exports.homepage = async (req, res) => { // renders the page from the emotionsRo
   };
   
 
+  /**
+ * Get/emotions/:id
+ * Emotions
+ */
+ exports.exploreEmotion = async (req, res) => { // renders the page from the emotionsRoutes of homepage
+    try {
+        let emotionId = req.params.id // gets id from the uri request parameters. params. An object containing parameter values parsed from the URL path. For example if you have the route /user/:name , then the "name" from the URL path wil be available as req.params.name 
+        const emotion = await Emotion.findById(recipeId) //use emotion model interface to search emotions collection in mongodb for id
+    
+    res.render("emotion", { title: "Emotions App - Emotion", categories}); // render homepage title, categories,feelings to category ejs
+    } catch (error) {
+        errorHandling(res,error)
+    }
+  };
+  
+
 
 
 // *******************************************

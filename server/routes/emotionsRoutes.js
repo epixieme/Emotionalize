@@ -11,4 +11,6 @@ const emotionsController = require('../controllers/emotionsController'); //impor
 
 router.get('/', emotionsController.homepage); //create the route
 router.get('/categories', emotionsController.exploreCategories);
+router.get('/emotion/:id', emotionsController.exploreEmotion) //creating the route to get a more detailed view of each emotion when you click on it
+
 module.exports = router
