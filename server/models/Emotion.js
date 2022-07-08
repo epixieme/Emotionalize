@@ -36,5 +36,7 @@ image:{
 }
 
 })
+
+emotionSchema.index({name:'text', description:'text'}); /// index search
 //Export the model so it can be reused in other js files
 module.exports = mongoose.model('Emotion', emotionSchema)// interface to the db

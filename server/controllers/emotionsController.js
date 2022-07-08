@@ -47,7 +47,7 @@ exports.exploreCategories = async (req, res) => {
     const categories = await Category.find({}).limit(limitNumber); // search model schema in models/Category.js
     res.render("categories", {
       title: "Emotions App - Categories",
-      categories
+      categories,
     }); // render homepage title, categories,feelings to category ejs
   } catch (error) {
     errorHandling(res, error);
@@ -58,22 +58,21 @@ exports.exploreCategories = async (req, res) => {
  * Categories by id // click on category eg all emotions and get every under a certain catergory when you click on it
  */
 exports.exploreCategoriesById = async (req, res) => {
-    // renders the page from the emotionsRoutes of homepage
-    try {
-
-    let categoryId = req.params.id
-      const limitNumber = 20;
-      const categoryById = await Emotion.find({'category':categoryId}).limit(limitNumber); // search model schema in models/Category.js
-      res.render("categories", {
-        title: "Emotions App - Categories",
-        categoryById
-      }); // render homepage title, categories,feelings to category ejs
-    } catch (error) {
-      errorHandling(res, error);
-    }
-  };
-
-
+  // renders the page from the emotionsRoutes of homepage
+  try {
+    let categoryId = req.params.id;
+    const limitNumber = 20;
+    const categoryById = await Emotion.find({ category: categoryId }).limit(
+      limitNumber
+    ); // search model schema in models/Category.js
+    res.render("categories", {
+      title: "Emotions App - Categories",
+      categoryById,
+    }); // render homepage title, categories,feelings to category ejs
+  } catch (error) {
+    errorHandling(res, error);
+  }
+};
 
 /**
  * Use routes/emotionsRoutes
@@ -93,19 +92,23 @@ exports.exploreEmotion = async (req, res) => {
   }
 };
 
-
 /**
  * Use routes/emotionsRoutes
  * POST/search
  * search
  */
 exports.searchEmotion = async (req, res) => {
+  try {
+    let searchTerm = req.body.searchTerm
+    let emotion = await Emotion.find({$text:{$search:searchTerm, $diacriticSensitive:true}})
+    res.render("search", { title: "Emotions App - Search", emotion });
+  } catch (error) {
+    errorHandling(res, error);
+  }
 
 
-    //searchTerm
-    res.render("search", { title: "Emotions App - Search" });
-      
-     }
+ 
+};
 
 // *******************************************
 // INSERT DUMMY DATA
