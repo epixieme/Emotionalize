@@ -1,1 +1,51 @@
-<h1>Emotion</h1>
+<!-- displays emotion details after clicking on this weeks emotions from the home page  -->
+
+
+<% if(emotion != null) { %>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">
+      <%- emotion.name %>
+    </li>
+  </ol>
+</nav>
+
+<section class="row">
+  <section class="col-12 col-md-4">
+    <img
+      src="/uploads/<%-emotion.image%>"
+      class="img-fluid sticky-top"
+      style="top: 20px"
+      alt="<%- emotion.name %>"
+      loading="lazy"
+    />
+  </section>
+  <section class="col-12 col-md-8">
+    <section class="row">
+      <section class="col-12">
+        <h1><%- emotion.name %></h1></section>
+        <section class="col-12 mb-4"><i class="bi bi-tag"></i> <%- emotion.category %></section>
+        <section class="col-12" style="white-space: pre-line">
+        <h4>Describe Emotion</h4>
+        <p><%- emotion.description %></p>
+        </section>
+    </section>
+
+    <section class="row pt-4">
+        <section class="col-12">
+            <h4>Feelings</h4>
+           <ul class = "list-group list-group-flush">
+            <% emotion.feelings.forEach(function(feeling, index){%>
+            <li class ="list-group-item">
+             <p> <%- feeling %>  </p>
+            </li>
+            <% }) %>
+           </ul>
+        </section>
+    </section>
+  </section>
+</section>
+<% } else { %>
+    <p>No item found.</p>
+<% } %>

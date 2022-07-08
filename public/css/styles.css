@@ -2,7 +2,7 @@
     --bs-font-sans-serif: 'Rubik', sans-serif;
   }
   
-  .container-xxl { max-width: 1530px; }
+  .container-xxl { max-width: 1530px;  background:mintcream;}
   
   body {
     background-image: url("/img/i-like-food.svg");
@@ -36,10 +36,17 @@
   }
   
   .category__img--large {
-    height: 330px;
+    height: 170px;
   }
   
   .category__img img {
     width: 100%;
     object-fit: cover;
+  }
+
+
+  .hero-img{
+    border-top-left-radius: 40%;
+    border-bottom-right-radius: 40%;
+    /* transform:rotate(-11deg) */
   }

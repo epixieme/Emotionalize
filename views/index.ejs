@@ -1,7 +1,7 @@
 <section class="row flex-lg-row-reverse align-items-center g-5 py-4 mb-4">
   <section class="col-12 col-lg-6">
-    <img
-      src="/img/hero-image.png"
+    <img class ='hero-img'
+      src="/img/emotioneggs.jpg"
       width="607"
       height="510"
       class="d-block mx-lg-auto img-fluid"
@@ -20,18 +20,19 @@
     <section class="d-grid gap-2 d-md-flex justify-content-md-start">
       <a
         href="/explore-latest"
-        class="btn btn-primary btn-dark btn-lg px-4 me-md-2"
+        class="btn btn-dark btn-lg px-4 me-md-2"
         >Explore your past emotions</a
       >
-      <a
+      <!-- <a
         href="/random-emotion"
         class="btn btn-outline-secondary btn-dark btn-lg px-4 me-md-2"
         >Show Random emotions</a
-      >
+      > -->
     </section>
   </section>
 </section>
 
+<!-- show all emotion categories on homepage-->
 <!-- Categories Start -->
 
 <section class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3 py-4">
@@ -47,7 +48,7 @@
   </a>
   <% }) %>
   <% } %>
-
+<!-- links to all moods when clicked on -->
   <a href="/categories" class="col text-center category_link">
     <section class="category__img shadow">
       <img src="img/allemotions.jpg" alt="All Moods" loading="lazy" />
@@ -58,6 +59,8 @@
 
 <!-- Categories End -->
 
+<!-- this weeks emotions -->
+
 <!-- latest start -->
 <section class="pb-4 pt-4">
   <section class="d-flex mb-2 align-items-center">
@@ -66,9 +69,10 @@
   </section>
 
   <section class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-   
+   <!-- creates link using emotion route to details created under emotion.ejs -->
    <% if(feelings !='') { %>
     <% feelings.LatestEmotion.forEach(function(emotion, index){ %>
+        <!-- uses the id as the link to the indivial emotion by id -->
     <a href="/emotion/<%= emotion._id %>" class="col text-center category_link">
       <section class="category__img category__img--large shadow">
         <img src="/uploads/<%= emotion.image %>" alt="<%= emotion.name %>" loading="lazy" />
@@ -77,12 +81,17 @@
     </a>
 
     <% }) %>
+    <% } else { %>
+      <p>No items found.</p>
     <% } %>
   </section>
 </section>
 
+
+
 <!-- latest end -->
 
+<!-- show all entries under individual emotion categories on home page eg all posts that are happy  -->
 
 <!-- Happy start -->
 <section class="pb-4 pt-4">
@@ -101,9 +110,10 @@
         </section>
         <section class="pt-1"><%= emotion.name %></section>
       </a>
-  
       <% }) %>
-      <% } %>
+    <% } else { %>
+      <p>No items found.</p>
+    <% } %>
     </section>
   </section>
   
@@ -127,6 +137,8 @@
       </a>
   
       <% }) %>
+      <% } else { %>
+        <p>No items found.</p>
       <% } %>
     </section>
   </section>
