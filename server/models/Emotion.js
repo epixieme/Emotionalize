@@ -25,7 +25,7 @@ feelings:{
 },
 category:{
     type:String,
-    enum:['Happy','Sad','Angry','Confused'],
+    enum:['Happy','Sad','Angry','Confused','Depressed', 'Anxious'],
     required:'This field is required'
 
 },

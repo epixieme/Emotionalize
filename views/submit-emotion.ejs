@@ -1,0 +1,89 @@
+<section class="'px-4 py-5 my-5 text-center">
+    <h1 class="display-5 fw-bold">Submit Your Emotion</h1>
+<section class="col-lg-6 mx-auto">
+    <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor perspiciatis voluptatum debitis aspernatur itaque repellendus facilis cumque iusto. Ducimus, eaque. Quia quo maiores corporis consequatur similique animi architecto accusamus impedit? Fill out your emotions</p>
+</section>
+</section>
+
+
+
+<section class="'row justify-content-center">
+   
+   
+   
+    <% if(infoSubmitObj !=''){ %>
+        <div class="col-8 alert alert-success" role="alert">
+       <%= infoSubmitObj %>
+         </div>
+         <% } %>
+    
+            
+    <% if(infoErrorsObj !=''){ %>
+        <div class="col-8 alert alert-danger" role="alert">
+       <%= infoErrorsObj[0].message %>
+         </div>
+         <% } %>
+    
+    
+    <section class ='col-8'>
+<form action="/submit-emotion" enctype ='multipart/form-data' method="POST">
+<section class="row g-3">
+    <section class="col-12">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" name="email" id="email" class="form-control">
+
+    </section>
+    <section class="col-12">
+        <label for="name" class="form-label">Emotion Name</label>
+        <input type="text" name="name" id="name" class="form-control">
+
+    </section>
+    <section class="col-12">
+        <label for="description" class="form-label">Describe your emotion</label>
+        <textarea name="description" id="description" class="form-control" cols="30" rows="4">
+            </textarea>
+
+    </section>
+
+    <section class="col-12">
+        <label for="feelings" class="form-label">List your Feelings</label><br>
+        <small>Example: content, joyful</small> 
+        <section class="emotionList mb-1">
+            <section class="emotionSection">
+        <input type="text" name="feelings" class="form-control">
+    </section>
+    </section>
+    </section>
+    <section class ="col-12">
+<button type="button" class="btn btn-outline-primary" id ="addEmotionsBtn">+ Feeling</button>
+    </section>
+
+    <section class="col-12">
+        <label for="category">Select Catagory</label>
+        <select class="form-select form-control" name="category" aria-label="category">
+            <option selected>Select Category</option>
+            <option value="Happy">Happy</option>
+            <option value="Sad">Sad</option>
+            <option value="Angry">Angry</option>
+            <option value="Confused">Confused</option>
+            <option value="Depressed">Depressed</option>
+            <option value="Anxious">Anxious</option>
+
+            <!-- 'Happy','Sad','Angry','Confused','Depressed', 'Anxious' -->
+        </select>
+    </section>
+
+    <section class="col-12">
+        <label for="image">Emotion Image</label>
+        <input type="file" class ="form-control" name="image" accept="image/*">
+    </section>
+
+    <section class="col-12">
+    <button type ="submit" class="btn btn-primary">Submit Emotion</button>
+
+    </section>
+    
+</section>
+</form>
+</section>
+</section>

@@ -117,9 +117,45 @@ exports.searchEmotion = async (req, res) => {
  */
  exports.submitEmotion = async (req, res) => {
 
-  res.render("submit-emotion", { title: "Emotions App - Submit Emotion" });
+const infoErrorsObj = req.flash('infoErrors')
+const infoSubmitObj = req.flash('infoSubmit')
+  res.render("submit-emotion", { title: "Emotions App - Submit Emotion",infoErrorsObj,infoSubmitObj });
  
 };
+
+/**
+
+ * POST/submit
+ * submit
+ */
+ exports.submitEmotionOnPost = async (req, res) => {
+
+try{
+
+const newEmotion = new Emotion({
+  name: "Feeling Angry, grrrr",
+  description:"I woke up feeling angry and ......",
+  email:'kirstie@unreal.co.uk',
+  feelings:'Rage',
+  category:'Angry',
+  image:'anger.jpg'
+
+})
+
+await newEmotion.save()
+
+  req.flash('infoSubmit', 'Emotion has been added')
+  res.redirect('/submit-emotion')
+}catch (error) {
+  // res.json(error) can get the error messages used to populate validation on the submit form using submit-emotion.ejs
+  req.flash('infoErrors', error)
+  res.redirect('/submit-emotion')
+}
+
+
+
+ 
+ }
 
 
 // *******************************************
