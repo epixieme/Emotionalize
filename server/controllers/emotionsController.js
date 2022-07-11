@@ -133,12 +133,12 @@ const infoSubmitObj = req.flash('infoSubmit')
 try{
 
 const newEmotion = new Emotion({
-  name: "Feeling Angry, grrrr",
-  description:"I woke up feeling angry and ......",
-  email:'kirstie@unreal.co.uk',
-  feelings:'Rage',
-  category:'Angry',
-  image:'anger.jpg'
+  name:req.body.name ,
+  description:req.body.description,
+  email:req.body.email,
+  feelings:req.body.feelings,
+  category:req.body.category,
+  image:req.body.image
 
 })
 
