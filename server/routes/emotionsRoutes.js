@@ -14,4 +14,6 @@ router.get('/emotion/:id', emotionsController.exploreEmotion) //creating the rou
 router.get('/categories', emotionsController.exploreCategories);
 router.get('/categories/:id', emotionsController.exploreCategoriesById);
 router.post('/search', emotionsController.searchEmotion);
+router.get('/submit-emotion',emotionsController.submitEmotion);
+
 module.exports = router

@@ -110,6 +110,18 @@ exports.searchEmotion = async (req, res) => {
  
 };
 
+/**
+
+ * GET/submit
+ * submit
+ */
+ exports.submitEmotion = async (req, res) => {
+
+  res.render("submit-emotion", { title: "Emotions App - Submit Emotion" });
+ 
+};
+
+
 // *******************************************
 // INSERT DUMMY DATA
 // *******************************************
