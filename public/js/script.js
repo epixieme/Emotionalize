@@ -1,20 +1,28 @@
 let addEmotionsBtn = document.querySelector("#addEmotionsBtn");
 let emotionList = document.querySelector(".emotionList"); //  emotion list containing all the emotions to the list when filling out the form
 let emotionSection = document.querySelectorAll(".emotionSection")[0]; // grab first section out of multiple sections, this is the one we will append to
-
+if(addEmotionsBtn){
 addEmotionsBtn.addEventListener("click", function () {
   let newEmotions = emotionSection.cloneNode(true); // clone the first section above with the input field inside // takes off the event handlers
   let input = newEmotions.getElementsByTagName("input")[0]; // take the first input out of the section 'newEmotions' and clear it out
-  console.log(input)
-    input.value = ""; //clear out the value just in case there is already a value
+input.value = ""; //clear out the value just in case there is already a value
   emotionList.appendChild(newEmotions); //  append new feeling section and input box on click
-});
+
+})};
 
 /////// change all of this code below/////
 // const edit = document.querySelectorAll(".editGame");
 // const update = document.querySelectorAll(".updateGame");
-const deleteEmotion = document.querySelector(".deleteEmotionsBtn");
 
+const deleteEmotion = document.querySelectorAll(".deleteEmotionsBtn");
+
+if(deleteEmotion){
+// deleteEmotion.addEventListener('click', deleteEmotionsInfo)}
+
+const deleteEmot = Array.from(deleteEmotion).forEach((element) => {
+    element.addEventListener("click", deleteEmotionsInfo); /// hears the click editGameInfo
+  });
+}
 // const searchBtn = document.querySelectorAll('.button')
 
 // const editArray = Array.from(edit).forEach((element) => {
@@ -84,29 +92,33 @@ const deleteEmotion = document.querySelector(".deleteEmotionsBtn");
 // } catch (err) {}
 // }
 
-async function deleteGameInfo(event) {
+
+async function deleteEmotionsInfo(event) {
   
   const target = event.target;
 
-console.log(target)
+
 
   // console.log(document.querySelectorAll(".elements")); /// how can I make this section dryer - maybe an object? could I use this query selector and a conidtion? https://bobbyhadz.com/blog/javascript-get-data-attribute-from-event-object
   // grabs all of the dom element (span) innertext for the target
 
-//   const name = target.parentNode.parentNode.childNodes[5].innerText;
-
-//   try {
-//     const res = await fetch("/deleteGames", {
-//       method: "delete",
-//       headers: { "Content-Type": "application/json" },
-//       body: JSON.stringify({
-//         // Send these as a string to the server
-//         title: title, // have to find a way to update the field on input
-//       }),
-//     });
-//     const data = await res.json();
-//     location.reload();
-//   } catch (err) {
-//     console.log(err)
-//   }
+//   const name = target.parentNode.parentNode.childNodes[5].innerText
+const name = target.parentNode.parentNode.childNodes[1].childNodes[1].innerText
+    console.log(name)
+  try {
+   const response = await fetch('/delete-emotion', {
+      method: "delete",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        // Send these as a string to the server
+        name: name
+      }),
+    });
+  const data = await response.json();
+    location.reload()
+  } catch (err) {
+  
+  }
 }
+
+

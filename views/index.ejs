@@ -77,9 +77,19 @@
       <section class="category__img category__img--large shadow">
         <img src="/uploads/<%= emotion.image %>" alt="<%= emotion.name %>" loading="lazy" />
       </section>
-      <section class="pt-1"><%= emotion.name %></section>
+      <section class="pt-1">
+        <%= emotion.name %>
+      </section>
     </a>
-
+    <section class="pt-1">
+    <!-- <button
+    
+    type="button"
+    class="btn btn-outline-dark deleteEmotionsBtn"
+  >
+Delete
+  </button> -->
+</section>
     <% }) %>
     <% } else { %>
       <p>No items found.</p>

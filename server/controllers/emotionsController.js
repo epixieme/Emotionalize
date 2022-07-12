@@ -99,15 +99,14 @@ exports.exploreEmotion = async (req, res) => {
  */
 exports.searchEmotion = async (req, res) => {
   try {
-    let searchTerm = req.body.searchTerm
-    let emotion = await Emotion.find({$text:{$search:searchTerm, $diacriticSensitive:true}})
+    let searchTerm = req.body.searchTerm;
+    let emotion = await Emotion.find({
+      $text: { $search: searchTerm, $diacriticSensitive: true },
+    });
     res.render("search", { title: "Emotions App - Search", emotion });
   } catch (error) {
     errorHandling(res, error);
   }
-
-
- 
 };
 
 /**
@@ -115,12 +114,14 @@ exports.searchEmotion = async (req, res) => {
  * GET/submit
  * submit
  */
- exports.submitEmotion = async (req, res) => {
-
-const infoErrorsObj = req.flash('infoErrors')
-const infoSubmitObj = req.flash('infoSubmit')
-  res.render("submit-emotion", { title: "Emotions App - Submit Emotion",infoErrorsObj,infoSubmitObj });
- 
+exports.submitEmotion = async (req, res) => {
+  const infoErrorsObj = req.flash("infoErrors");
+  const infoSubmitObj = req.flash("infoSubmit");
+  res.render("submit-emotion", {
+    title: "Emotions App - Submit Emotion",
+    infoErrorsObj,
+    infoSubmitObj,
+  });
 };
 
 /**
@@ -128,52 +129,67 @@ const infoSubmitObj = req.flash('infoSubmit')
  * POST/submit
  * submit
  */
- exports.submitEmotionOnPost = async (req, res) => {
+exports.submitEmotionOnPost = async (req, res) => {
+  try {
+    let imageUploadFile;
+    let uploadPath;
+    let newImageName;
+    if (!req.files || Object.keys(req.files).length === 0) {
+      console.log("No files were uploaded");
+    } else {
+      imageUploadFile = req.files.image;
+      newImageName = Date.now() + imageUploadFile.name;
+      uploadPath =
+        require("path").resolve("./") + "/public/uploads/" + newImageName;
+      imageUploadFile.mv(uploadPath, function (err) {
+        if (err) return res.status(500).send(err);
+      });
+    }
+
+    const newEmotion = new Emotion({
+      name: req.body.name,
+      description: req.body.description,
+      email: req.body.email,
+      feelings: req.body.feelings,
+      category: req.body.category,
+      image: newImageName,
+    });
+
+    await newEmotion.save();
+
+    req.flash("infoSubmit", "Emotion has been added");
+    res.redirect("/submit-emotion");
+  } catch (error) {
+    // res.json(error) can get the error messages used to populate validation on the submit form using submit-emotion.ejs
+    req.flash("infoErrors", error);
+    res.redirect("/submit-emotion");
+  }
+};
+
+exports.deleteEmotion =  async (req, res) => {
 
 try{
+const data = await Emotion.deleteOne({name:req.body.name})
+console.log(req.body.name)
+res.json(data)
+}catch (error){
+  res.status(400).json( { message: error })
 
-  let imageUploadFile;
-  let uploadPath;
-  let newImageName;
-  if(!req.files || Object.keys(req.files).length === 0){
-    console.log('No files were uploaded');
-
-  }else{
-    imageUploadFile =req.files.image;
-    newImageName = Date.now() + imageUploadFile.name;
-    uploadPath =require('path').resolve('./') + '/public/uploads/' + newImageName
-   imageUploadFile.mv(uploadPath, function(err){
-  if(err) return res.status(500).send(err)
-})
-
-  }
-
-const newEmotion = new Emotion({
-  name:req.body.name,
-  description:req.body.description,
-  email:req.body.email,
-  feelings:req.body.feelings,
-  category:req.body.category,
-  image:newImageName
-
-})
-
-await newEmotion.save()
-
-  req.flash('infoSubmit', 'Emotion has been added')
-  res.redirect('/submit-emotion')
-}catch (error) {
-  // res.json(error) can get the error messages used to populate validation on the submit form using submit-emotion.ejs
-  req.flash('infoErrors', error)
-  res.redirect('/submit-emotion')
+}
 }
 
 
 
- 
- }
+//  async function deleteEmotion(){
 
+//   try{
+//     const res = await Emotion.deleteOne({name:req.body.name})
 
+//   }catch(error){
+//       console.log(error)
+//   }
+//  }
+//  deleteEmotion()
 // *******************************************
 // INSERT DUMMY DATA
 // *******************************************
