@@ -7,7 +7,7 @@ addEmotionsBtn.addEventListener("click", function () {
   let input = newEmotions.getElementsByTagName("input")[0]; // take the first input out of the section 'newEmotions' and clear it out
   console.log(input)
     input.value = ""; //clear out the value just in case there is already a value
-  emotionList.appendChild(newEmotions); //  append new feeling input box on click
+  emotionList.appendChild(newEmotions); //  append new feeling section and input box on click
 });
 
 /////// change all of this code below/////
