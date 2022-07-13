@@ -23,14 +23,15 @@
   <section class="col-12 col-md-8">
     <section class="row">
       <section class="col-12">
-        <h1 contenteditable="false"><%- emotion.name %></h1>
+        <h1 class ='userInputs' contenteditable="false"><%- emotion.name %></h1>
       </section>
       <section class="col-12 mb-4">
-        <i class="bi bi-tag"></i> <%- emotion.category %>
+        <i class="bi bi-tag"></i> 
+        <%- emotion.category %>
       </section>
       <section class="col-12" style="white-space: pre-line">
         <h4>Describe Emotion</h4>
-        <p contenteditable="false"><%- emotion.description %></p>
+        <p contenteditable="false" class ='userInputs'><%- emotion.description %></p>
       </section>
     </section>
 
@@ -40,7 +41,7 @@
         <ul class="list-group list-group-flush">
           <% emotion.feelings.forEach(function(feeling, index){%>
           <li class="list-group-item">
-            <p contenteditable="false"><%- feeling %></p>
+            <p contenteditable="false" class ='userInputs'><%- feeling %></p>
           </li>
           <% }) %>
         </ul>
@@ -50,15 +51,15 @@
     <section class="col-12">
       <button
         type="button"
-        class="btn btn-outline-dark"
-        id="editEmotionsBtn"
+        class="btn btn-outline-dark editEmotionsBtn"
+ 
       >
      Edit
       </button>
       <button
       type="button"
-      class="btn btn-outline-dark"
-      id="updateEmotionsBtn"
+      class="btn btn-outline-dark updateEmotionsBtn"
+    
     >
    Update
     </button>

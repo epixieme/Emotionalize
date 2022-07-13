@@ -166,6 +166,13 @@ exports.submitEmotionOnPost = async (req, res) => {
   }
 };
 
+
+/**
+
+ * DELETE
+ * DELETE
+ */
+
 exports.deleteEmotion =  async (req, res) => {
 
 try{
@@ -175,6 +182,17 @@ res.json(data)
 }catch (error){
   res.status(400).json( { message: error })
 
+}
+}
+
+
+exports.updateEmotion = async (req, res) => {
+try{
+  const data = await Emotion.updateOne({name:req.body.name, description:req.body.description, feelings:req.body.feelings})
+  console.log(req.body.name)
+  res.json(data)
+}catch(error){
+  res.status(400).json( { message: error })
 }
 }
 
