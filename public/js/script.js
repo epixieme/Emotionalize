@@ -11,10 +11,6 @@ if (addEmotionsBtn) {
   });
 }
 
-/////// change all of this code below/////
-// const edit = document.querySelectorAll(".editGame");
-// const update = document.querySelectorAll(".updateGame");
-
 const deleteEmotion = document.querySelectorAll(".deleteEmotionsBtn");
 const editEmotion = document.querySelectorAll(".editEmotionsBtn");
 const updateEmotion = document.querySelectorAll(".updateEmotionsBtn");
@@ -40,11 +36,9 @@ if (updateEmotion) {
 function emotionsVariables() {
   const fields = document.querySelectorAll(".userInputs");
   return fields;
-
 }
 
 function editEmotionsInfo() {
- 
   const fields = emotionsVariables();
   const target = this;
   if (target.classList.contains("editEmotionsBtn")) {
@@ -59,12 +53,11 @@ function editEmotionsInfo() {
 async function updateEmotionsInfo() {
   const fields = emotionsVariables();
   const target = this;
-  let name = fields[0].innerText;
-  let description = fields[1].innerText;
-  let feelings = Array.from(fields)
+  const name = fields[0].innerText;
+  const description = fields[1].innerText;
+  const feelings = Array.from(fields)
     .map((item, index) => (index > 1 ? item.innerText : ""))
     .filter(String);
-
 
   if (target.classList.contains("updateEmotionsBtn")) {
     fields.forEach((item) => {
