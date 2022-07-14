@@ -166,48 +166,36 @@ exports.submitEmotionOnPost = async (req, res) => {
   }
 };
 
-
 /**
 
  * DELETE
  * DELETE
  */
 
-exports.deleteEmotion =  async (req, res) => {
-
-try{
-const data = await Emotion.deleteOne({name:req.body.name})
-console.log(req.body.name)
-res.json(data)
-}catch (error){
-  res.status(400).json( { message: error })
-
-}
-}
-
+exports.deleteEmotion = async (req, res) => {
+  try {
+    const data = await Emotion.deleteOne({ name: req.body.name });
+    console.log(req.body.name);
+    res.json(data);
+  } catch (error) {
+    res.status(400).json({ message: error });
+  }
+};
 
 exports.updateEmotion = async (req, res) => {
-try{
-  const data = await Emotion.updateOne({name:req.body.name, description:req.body.description, feelings:req.body.feelings})
-  console.log(req.body.name)
-  res.json(data)
-}catch(error){
-  res.status(400).json( { message: error })
-}
-}
+  try {
+    const data = await Emotion.updateOne({
+      name: req.body.name,
+      description: req.body.description,
+      feelings: req.body.feelings,
+    });
+    console.log(req.body.name);
+    res.json(data);
+  } catch (error) {
+    res.status(400).json({ message: error });
+  }
+};
 
-
-
-//  async function deleteEmotion(){
-
-//   try{
-//     const res = await Emotion.deleteOne({name:req.body.name})
-
-//   }catch(error){
-//       console.log(error)
-//   }
-//  }
-//  deleteEmotion()
 // *******************************************
 // INSERT DUMMY DATA
 // *******************************************
