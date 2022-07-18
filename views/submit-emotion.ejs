@@ -52,7 +52,7 @@
         </section>
 
         <section class="col-12">
-          <label for="feelings" class="form-label">List your Feelings</label
+          <label for="feelings" class="form-label">List your feelings</label
           ><br />
           <small>Example: content, joyful</small>
           <section class="emotionList mb-1">
@@ -70,6 +70,8 @@
             + Feeling
           </button>
         </section>
+
+        
 
         <section class="col-12">
           <label for="category">Select Catagory</label>
@@ -89,7 +91,25 @@
             <!-- 'Happy','Sad','Angry','Confused','Depressed', 'Anxious' -->
           </select>
         </section>
-
+        <section class="col-12">
+          <label for="actions" class="form-label">Add actions to either persist or negate the emotion(s)</label
+          ><br />
+          <small>Example: Do some exercise</small>
+          <section class="actionList mb-1">
+            <section class="actionSection">
+              <input type="text" name="nextSteps" class="form-control" />
+            </section>
+          </section>
+        </section>
+        <section class="col-12">
+          <button
+            type="button"
+            class="btn btn-outline-primary"
+            id="addActionsBtn"
+          >
+            + Action
+          </button>
+        </section>
         <section class="col-12">
           <label for="image">Emotion Image</label>
           <input

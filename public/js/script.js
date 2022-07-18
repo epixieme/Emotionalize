@@ -1,7 +1,9 @@
 const addEmotionsBtn = document.querySelector("#addEmotionsBtn");
 const emotionList = document.querySelector(".emotionList"); //  emotion list containing all the emotions to the list when filling out the form
 const emotionSection = document.querySelectorAll(".emotionSection")[0]; // grab first section out of multiple sections, this is the one we will append to
-
+const addActionsBtn = document.querySelector('#addActionsBtn')
+const actionList = document.querySelector(".actionList"); //  emotion list containing all the emotions to the list when filling out the form
+const actionSection = document.querySelectorAll(".actionSection")[0]; // grab first section out of multiple sections, this is the one we will append to
 if (addEmotionsBtn) {
   addEmotionsBtn.addEventListener("click", function () {
     const newEmotions = emotionSection.cloneNode(true); // clone the first section above with the input field inside // takes off the event handlers
@@ -9,6 +11,15 @@ if (addEmotionsBtn) {
     input.value = ""; //clear out the value just in case there is already a value
     emotionList.appendChild(newEmotions); //  append new feeling section and input box on click
   });
+}
+
+if(addActionsBtn) {
+  addActionsBtn.addEventListener("click", function () {
+  const newActions = actionSection.cloneNode(true); // clone the first section above with the input field inside // takes off the event handlers
+  const input = newActions.getElementsByTagName("input")[0]; // take the first input out of the section 'newEmotions' and clear it out
+  input.value = ""; //clear out the value just in case there is already a value
+  actionList.appendChild(newActions); //  append new feeling section and input box on click
+});
 }
 
 const deleteEmotion = document.querySelectorAll(".deleteEmotionsBtn");

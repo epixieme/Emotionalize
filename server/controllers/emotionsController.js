@@ -92,6 +92,8 @@ exports.exploreEmotion = async (req, res) => {
   }
 };
 
+
+
 /**
  * Use routes/emotionsRoutes
  * POST/search
@@ -152,6 +154,7 @@ exports.submitEmotionOnPost = async (req, res) => {
       email: req.body.email,
       feelings: req.body.feelings,
       category: req.body.category,
+      nextSteps:req.body.nextSteps,
       image: newImageName,
     });
 
