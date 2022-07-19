@@ -25,7 +25,7 @@ const emotionSchema = new mongoose.Schema({
     enum: ["Happy", "Sad", "Angry", "Confused", "Depressed", "Anxious"],
     required: "This field is required",
   },
-  nextSteps:{
+  actions:{
     type: Array,
     required: "This field is required",
   },

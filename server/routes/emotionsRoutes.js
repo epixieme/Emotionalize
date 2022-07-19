@@ -16,7 +16,8 @@ router.get('/categories/:id', emotionsController.exploreCategoriesById);
 router.post('/search', emotionsController.searchEmotion);
 router.get('/submit-emotion',emotionsController.submitEmotion);
 router.post('/submit-emotion',emotionsController.submitEmotionOnPost);
-router.delete('/delete-emotion',emotionsController.deleteEmotion);
 router.put('/emotion/:id',emotionsController.updateEmotion)
+router.delete('/delete-emotion',emotionsController.deleteEmotion);
+
 
 module.exports = router

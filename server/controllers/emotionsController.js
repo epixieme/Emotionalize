@@ -1,4 +1,4 @@
-// *******************************************
+//*******************************************
 // HOMEPAGE CONTROLLER
 // *******************************************
 
@@ -154,7 +154,7 @@ exports.submitEmotionOnPost = async (req, res) => {
       email: req.body.email,
       feelings: req.body.feelings,
       category: req.body.category,
-      nextSteps:req.body.nextSteps,
+      actions:req.body.actions,
       image: newImageName,
     });
 
@@ -191,8 +191,9 @@ exports.updateEmotion = async (req, res) => {
       name: req.body.name,
       description: req.body.description,
       feelings: req.body.feelings,
+      actions:req.body.actions,
     });
-    console.log(req.body.name);
+    // console.log(req.body.nextSteps);
     res.json(data);
   } catch (error) {
     res.status(400).json({ message: error });
@@ -229,3 +230,4 @@ exports.updateEmotion = async (req, res) => {
 // }
 
 // insertDummyEmotionData();
+
