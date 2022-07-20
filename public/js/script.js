@@ -5,14 +5,6 @@ const addActionsBtn = document.querySelector('#addActionsBtn')
 const actionList = document.querySelector(".actionList"); //  emotion list containing all the emotions to the list when filling out the form
 const actionSection = document.querySelectorAll(".actionSection")[0]; // grab first section out of multiple sections, this is the one we will append to
 
-//submit emotion
-let description = document.querySelector('#description')
-description.addEventListener("input",trimWhiteSpace)
-function trimWhiteSpace(){
-  description.value.trimWhiteSpace()
-
-}
-trimWhiteSpace()
 
 if(addEmotionsBtn){
 addEmotionsBtn.addEventListener("click", function () {
