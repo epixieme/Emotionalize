@@ -57,5 +57,24 @@ a {
   /* transform:rotate(-11deg) */
 }
 
-.btn-dark { background:#075F63 }
+.btn-dark { 
+  background:#075F63 ;
+  border:1px solid #075F63 
+}
+.btn-outline-dark{
+  border:1px solid #075F63 
+}
+
+#description{
+  white-space: normal
+}
+
+textarea{
+border:none;
+}
+
+#fileUpload::before{
+  background:#075F63 ;
+  border:1px solid #075F63 
+}
 

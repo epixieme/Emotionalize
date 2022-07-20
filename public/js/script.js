@@ -5,6 +5,15 @@ const addActionsBtn = document.querySelector('#addActionsBtn')
 const actionList = document.querySelector(".actionList"); //  emotion list containing all the emotions to the list when filling out the form
 const actionSection = document.querySelectorAll(".actionSection")[0]; // grab first section out of multiple sections, this is the one we will append to
 
+//submit emotion
+let description = document.querySelector('#description')
+description.addEventListener("input",trimWhiteSpace)
+function trimWhiteSpace(){
+  description.value.trimWhiteSpace()
+
+}
+trimWhiteSpace()
+
 if(addEmotionsBtn){
 addEmotionsBtn.addEventListener("click", function () {
   let newEmotions = emotionSection.cloneNode(true); // clone the first section above with the input field inside // takes off the event handlers
@@ -91,9 +100,9 @@ async function updateEmotionsInfo() {
     .map((item, index) => (index > 1 ? item.innerText : ""))
     .filter(String);
 
-  const actions = Array.from(actionFields).map(item=>item.innerText)
+  const actions = Array.from(actionFields)
+  .map(item=>item.innerText)
   console.log(actions)
- 
   
   if (target.classList.contains("updateEmotionsBtn")) {
     fields.forEach((item) => {
@@ -107,7 +116,6 @@ async function updateEmotionsInfo() {
       item.style.border = "none";
       item.style.borderRadius = "10px";
     });
-   
    
   }
 

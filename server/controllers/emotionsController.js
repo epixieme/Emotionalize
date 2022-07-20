@@ -17,7 +17,7 @@ function errorHandling(res, error) {
 exports.homepage = async (req, res) => {
   // renders the page from the emotionsRoutes of homepage
   try {
-    const limitNumber = 5;
+    const limitNumber = 7;
     const categories = await Category.find({}).limit(limitNumber); // search model schema in models/Category.js
     const LatestEmotion = await Emotion.find()
       .sort({ _id: -1 })
