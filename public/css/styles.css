@@ -8,8 +8,8 @@
 }
 
 body {
-  background-image: url("/img/i-like-food.svg");
-  background-color: rgb(243, 243, 243);
+  /* background-image: url("/img/i-like-food.svg"); */
+  /* background-color: rgb(243, 243, 243); */
 }
 
 /* makes links black  in bootstrap */
@@ -56,7 +56,7 @@ a {
   border-bottom-right-radius: 40%;
   /* transform:rotate(-11deg) */
 }
-
+/* 
 .btn-dark { 
   background:#075F63 ;
   border:1px solid #075F63 
@@ -76,5 +76,5 @@ border:none;
 #fileUpload::before{
   background:#075F63 ;
   border:1px solid #075F63 
-}
+} */
 
