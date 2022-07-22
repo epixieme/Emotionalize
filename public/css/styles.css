@@ -1,16 +1,23 @@
 :root {
-  --bs-font-sans-serif: 'Rubik', sans-serif;
+  --bs-font-sans-serif: 'Albert Sans', sans-serif;
 }
 
 .container-xxl {
   max-width: 1530px;
   background: mintcream;
 }
-
+/* 
 body {
-  /* background-image: url("/img/i-like-food.svg"); */
-  /* background-color: rgb(243, 243, 243); */
-}
+  background: hsla(319, 82%, 52%, 1);
+
+  background: linear-gradient(90deg, hsla(319, 82%, 52%, 1) 0%, hsla(197, 61%, 83%, 1) 100%);
+  
+  background: -moz-linear-gradient(90deg, hsla(319, 82%, 52%, 1) 0%, hsla(197, 61%, 83%, 1) 100%);
+  
+  background: -webkit-linear-gradient(90deg, hsla(319, 82%, 52%, 1) 0%, hsla(197, 61%, 83%, 1) 100%);
+  
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#E91FA8", endColorstr="#B9DFEE", GradientType=1 );
+} */
 
 /* makes links black  in bootstrap */
 a {
@@ -52,9 +59,9 @@ a {
 
 
 .hero-img {
-  border-top-left-radius: 40%;
-  border-bottom-right-radius: 40%;
-  /* transform:rotate(-11deg) */
+ 
+
+
 }
 /* 
 .btn-dark { 
@@ -78,3 +85,18 @@ border:none;
   border:1px solid #075F63 
 } */
 
+.backgroundImg{
+  /* background-image: url(/img/circlesc.svg); */
+  background-repeat: no-repeat;
+  
+}
+
+.submitBackground{
+  
+     background-image: url(/img/circlesubmit.svg); 
+     height: 100vh;
+     background-repeat: no-repeat;
+     background-position: top left;
+     /* width: 100vw; */
+     
+}

@@ -186,8 +186,9 @@ exports.deleteEmotion = async (req, res) => {
 };
 
 exports.updateEmotion = async (req, res) => {
+  const id = req.params.id;
   try {
-    const data = await Emotion.updateOne({
+    const data = await Emotion.updateOne({id},{
       name: req.body.name,
       description: req.body.description,
       feelings: req.body.feelings,
