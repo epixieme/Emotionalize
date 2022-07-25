@@ -10,10 +10,10 @@
     </ol>
   </nav>
   <section class="row">
-    <section class="col-12 col-md-4">
+    <section class="col-1 col-md-4">
       <img
         src="/uploads/<%-emotion.image%>"
-        class="img-fluid sticky-top"
+        class="img-fluid sticky-top emotImage"
         style="top: 50px"
         alt="<%- emotion.name %>"
         loading="lazy"
@@ -31,13 +31,13 @@
           <%- emotion.category %>
         </section>
         <section class="col-12" style="white-space: pre-line">
-          <h4>Describe Emotion</h4>
+          <h4 class="border-bottom border-secondary">Describe Emotion</h4>
           <p contenteditable="false" class ='userInputs'><%- emotion.description %></p>
         </section>
       </section>
       <section class="row pt-4">
         <section class="col-12">
-          <h4>Feelings</h4>
+          <h4 class="border-bottom border-secondary">Feelings</h4>
           <ul class="list-group list-group-flush">
             <% emotion.feelings.forEach(function(feeling, index){%>
             <li class="list-group-item">
@@ -50,7 +50,7 @@
       </section>
       <section class="row pt-4">
         <section class="col-12">
-          <h4>Record you actions</h4>
+          <h4 class="border-bottom border-secondary mw-50">Record you actions</h4>
           <ul class="list-group list-group-flush">
             <% emotion.actions.forEach(function(action, index){%>
             <li class="list-group-item">
