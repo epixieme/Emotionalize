@@ -6,6 +6,7 @@ require("../models/database");
 const Category = require("../models/Category"); // get the Category js file from models dir
 const Emotion = require("../models/Emotion"); // get the Emotion js file from models dir
 
+
 function errorHandling(res, error) {
   res.status(500).send({ message: error.message || "Error Occured" });
 }
@@ -200,6 +201,12 @@ exports.updateEmotion = async (req, res) => {
     res.status(400).json({ message: error });
   }
 };
+
+exports.recentEmotions = async (req,res) => {
+
+};
+
+
 
 // *******************************************
 // INSERT DUMMY DATA

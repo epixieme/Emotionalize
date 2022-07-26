@@ -12,12 +12,13 @@ const emotionsController = require('../controllers/emotionsController'); //impor
 router.get('/', emotionsController.homepage); //create the route
 router.get('/emotion/:id', emotionsController.exploreEmotion) //creating the route to get a more detailed view of each emotion when you click on it
 router.get('/categories', emotionsController.exploreCategories); // all emotions (categories)
-router.get('/categories/:id', emotionsController.exploreCategoriesById);
 router.post('/search', emotionsController.searchEmotion);
 router.get('/submit-emotion',emotionsController.submitEmotion);
 router.post('/submit-emotion',emotionsController.submitEmotionOnPost);
 router.put('/emotion/:id',emotionsController.updateEmotion)
+router.get('/categories/:id', emotionsController.exploreCategoriesById);
 router.delete('/delete-emotion',emotionsController.deleteEmotion);
+router.get('/recent-emotions',emotionsController.recentEmotions);
 
 
 module.exports = router

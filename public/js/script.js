@@ -1,29 +1,27 @@
 let addEmotionsBtn = document.querySelector("#addEmotionsBtn");
 let emotionList = document.querySelector(".emotionList"); //  emotion list containing all the emotions to the list when filling out the form
 let emotionSection = document.querySelectorAll(".emotionSection")[0]; // grab first section out of multiple sections, this is the one we will append to
-const addActionsBtn = document.querySelector('#addActionsBtn')
+const addActionsBtn = document.querySelector("#addActionsBtn");
 const actionList = document.querySelector(".actionList"); //  emotion list containing all the emotions to the list when filling out the form
 const actionSection = document.querySelectorAll(".actionSection")[0]; // grab first section out of multiple sections, this is the one we will append to
 
-
-if(addEmotionsBtn){
-addEmotionsBtn.addEventListener("click", function () {
-  let newEmotions = emotionSection.cloneNode(true); // clone the first section above with the input field inside // takes off the event handlers
-  let input = newEmotions.getElementsByTagName("input")[0]; // take the first input out of the section 'newEmotions' and clear it out
-input.value = ""; //clear out the value just in case there is already a value
-  emotionList.appendChild(newEmotions); //  append new feeling section and input box on click
-
-})};
-
-if(addActionsBtn) {
-  addActionsBtn.addEventListener("click", function () {
-  const newActions = actionSection.cloneNode(true); // clone the first section above with the input field inside // takes off the event handlers
-  const input = newActions.getElementsByTagName("input")[0]; // take the first input out of the section 'newEmotions' and clear it out
-  input.value = ""; //clear out the value just in case there is already a value
-  actionList.appendChild(newActions); //  append new feeling section and input box on click
-});
+if (addEmotionsBtn) {
+  addEmotionsBtn.addEventListener("click", function () {
+    let newEmotions = emotionSection.cloneNode(true); // clone the first section above with the input field inside // takes off the event handlers
+    let input = newEmotions.getElementsByTagName("input")[0]; // take the first input out of the section 'newEmotions' and clear it out
+    input.value = ""; //clear out the value just in case there is already a value
+    emotionList.appendChild(newEmotions); //  append new feeling section and input box on click
+  });
 }
 
+if (addActionsBtn) {
+  addActionsBtn.addEventListener("click", function () {
+    const newActions = actionSection.cloneNode(true); // clone the first section above with the input field inside // takes off the event handlers
+    const input = newActions.getElementsByTagName("input")[0]; // take the first input out of the section 'newEmotions' and clear it out
+    input.value = ""; //clear out the value just in case there is already a value
+    actionList.appendChild(newActions); //  append new feeling section and input box on click
+  });
+}
 
 /////// change all of this code below/////
 const deleteEmotion = document.querySelectorAll(".deleteEmotionsBtn");
@@ -54,37 +52,35 @@ function emotionsVariables() {
   return fields;
 }
 
-function actionVariables(){
-    const actionFields = document.querySelectorAll(".actionInputs");
-    return actionFields
-
+function actionVariables() {
+  const actionFields = document.querySelectorAll(".actionInputs");
+  return actionFields;
 }
 
 function editEmotionsInfo() {
   const fields = emotionsVariables();
-  const actionFields = actionVariables()
-  console.log(fields)
+  const actionFields = actionVariables();
+  console.log(fields);
   const target = this;
   if (target.classList.contains("editEmotionsBtn")) {
-    fields.forEach((item) => {// grab all of the text fields and set them to editbale etc for the name, desc and feelings
+    fields.forEach((item) => {
+      // grab all of the text fields and set them to editbale etc for the name, desc and feelings
       item.setAttribute("contenteditable", true);
       item.style.border = "1px solid grey";
       item.style.borderRadius = "10px";
     });
-  actionFields.forEach((item) => { // grab all of the text fields and set them to editbale etc for the actions
+    actionFields.forEach((item) => {
+      // grab all of the text fields and set them to editbale etc for the actions
       item.setAttribute("contenteditable", true);
       item.style.border = "1px solid grey";
       item.style.borderRadius = "10px";
     });
-    
   }
 }
 
-
-
 async function updateEmotionsInfo() {
   const fields = emotionsVariables();
-  const actionFields = actionVariables()
+  const actionFields = actionVariables();
   const target = this;
   const name = fields[0].innerText;
   const description = fields[1].innerText;
@@ -92,10 +88,9 @@ async function updateEmotionsInfo() {
     .map((item, index) => (index > 1 ? item.innerText : ""))
     .filter(String);
 
-  const actions = Array.from(actionFields)
-  .map(item=>item.innerText)
-  console.log(actions)
-  
+  const actions = Array.from(actionFields).map((item) => item.innerText);
+  console.log(actions);
+
   if (target.classList.contains("updateEmotionsBtn")) {
     fields.forEach((item) => {
       item.setAttribute("contenteditable", false);
@@ -108,7 +103,6 @@ async function updateEmotionsInfo() {
       item.style.border = "none";
       item.style.borderRadius = "10px";
     });
-   
   }
 
   try {
@@ -120,15 +114,13 @@ async function updateEmotionsInfo() {
         name: name, // have to find a way to update the field on input
         description: description,
         feelings: feelings,
-        actions:actions
+        actions: actions,
       }),
     });
   } catch (err) {
-    console.log(err)
+    console.log(err);
   }
 }
-
-
 
 // function editGameInfo(event) {
 //   const target = event.target;
@@ -185,31 +177,28 @@ async function updateEmotionsInfo() {
 // } catch (err) {}
 // }
 
-
 async function deleteEmotionsInfo(event) {
-  
   const target = event.target;
-
-
 
   // console.log(document.querySelectorAll(".elements")); /// how can I make this section dryer - maybe an object? could I use this query selector and a conidtion? https://bobbyhadz.com/blog/javascript-get-data-attribute-from-event-object
   // grabs all of the dom element (span) innertext for the target
 
-//   const name = target.parentNode.parentNode.childNodes[5].innerText
-const name = target.parentNode.parentNode.childNodes[1].childNodes[1].innerText
-    console.log(name)
+  //   const name = target.parentNode.parentNode.childNodes[5].innerText
+  const name =
+    target.parentNode.parentNode.childNodes[1].childNodes[1].innerText;
+  console.log(name);
   try {
-   const response = await fetch('/delete-emotion', {
+    const response = await fetch("/delete-emotion", {
       method: "delete",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         // Send these as a string to the server
-        name: name
+        name: name,
       }),
     });
-  const data = await response.json();
-    location.reload()
-  } catch (err) {
-  
-  }
+    const data = await response.json();
+    location.reload();
+  } catch (err) {}
 }
+
+
