@@ -203,6 +203,25 @@ exports.updateEmotion = async (req, res) => {
 };
 
 exports.recentEmotions = async (req,res) => {
+  try{
+  const limit = 14
+  const latest = await Emotion.find()
+  .sort({ _id: -1 })
+  .limit(limit)
+  res.render("recent-emotions",{
+    title: "Emotions App - Recent Emotions",
+    latest
+  } )
+
+  res.render("index", {
+    title: "Emotions App - Homepage",
+    categories,
+    feelings,
+  }); // render homepage title and categories
+  }catch(error){
+errorHandling(res, error)
+  }
+
 
 };
 
