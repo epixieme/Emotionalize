@@ -13,11 +13,8 @@
 <section class="row justify-content-center">
   <% if(infoSubmitObj !=''){ %>
   <div class="col-8 alert alert-success" role="alert"><%= infoSubmitObj %></div>
-  <% } %> <% if(infoErrorsObj !=''){ %>
-  <div class="col-8 alert alert-danger" role="alert">
-    <%= infoErrorsObj[0].message %>
-  </div>
-  <% } %>
+  <% } %> 
+
 
   <section class="col-8">
     <form action="/submit-emotion" enctype="multipart/form-data" method="POST">
