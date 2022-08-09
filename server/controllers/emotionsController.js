@@ -87,7 +87,7 @@ exports.exploreEmotion = async (req, res) => {
     let emotionId = req.params.id; // on click of link from home page, gets id from the uri request parameters set in the route. params. An object containing parameter values parsed from the URL path. For example if you have the route /user/:name , then the "name" from the URL path wil be available as req.params.name. Should return one result
     const emotion = await Emotion.findById(emotionId); //use emotion model interface to search emotions collection in mongodb for the id in emotionId
 
-    res.render("emotion", { title: "Emotions App - Emotion", emotion }); // render homepage title, categories,feelings to category ejs
+    res.render("emotion", { title: "Emotions App - Emotion", emotion }); // render emotion page, homepage title, categories,feelings to category ejs
   } catch (error) {
     errorHandling(res, error);
   }
@@ -205,19 +205,15 @@ exports.updateEmotion = async (req, res) => {
 exports.recentEmotions = async (req,res) => {
   try{
   const limit = 14
-  const latest = await Emotion.find()
+  const emotion = await Emotion.find()
   .sort({ _id: -1 })
   .limit(limit)
   res.render("recent-emotions",{
     title: "Emotions App - Recent Emotions",
-    latest
+    emotion
   } )
 
-  res.render("index", {
-    title: "Emotions App - Homepage",
-    categories,
-    feelings,
-  }); // render homepage title and categories
+  // render homepage title and categories
   }catch(error){
 errorHandling(res, error)
   }

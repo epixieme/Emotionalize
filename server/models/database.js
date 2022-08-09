@@ -13,3 +13,5 @@ db.once("open", () => {
 
 require("./Category"); // import Category.js
 require("./Emotion"); // import Emotion.js
+
+

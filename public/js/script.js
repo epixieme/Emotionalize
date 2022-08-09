@@ -66,13 +66,15 @@ function editEmotionsInfo() {
     fields.forEach((item) => {
       // grab all of the text fields and set them to editbale etc for the name, desc and feelings
       item.setAttribute("contenteditable", true);
-      item.style.border = "1px solid grey";
+      item.style.background = "#C8CFD2";
+      // item.style.border = "1px solid grey";
       item.style.borderRadius = "10px";
     });
     actionFields.forEach((item) => {
       // grab all of the text fields and set them to editbale etc for the actions
       item.setAttribute("contenteditable", true);
-      item.style.border = "1px solid grey";
+      // item.style.border = "1px solid grey";
+       item.style.background = "#C8CFD2";
       item.style.borderRadius = "10px";
     });
   }
@@ -94,7 +96,7 @@ async function updateEmotionsInfo() {
   if (target.classList.contains("updateEmotionsBtn")) {
     fields.forEach((item) => {
       item.setAttribute("contenteditable", false);
-      item.style.border = "none";
+      item.style.background= "none";
       item.style.borderRadius = "10px";
     });
 

@@ -112,3 +112,45 @@ border:none;
   border-radius: 8px;
 
 }
+
+
+.userInputs, .actionInputs{
+  display: flex;
+  flex-wrap: wrap;
+  max-width:600px;
+  /* border:1px solid red; */
+  height:40px;
+  word-wrap: break-word;
+  word-break: break-all;
+  
+
+}
+
+.editfields{
+  width:100%;
+  display: flex;
+  flex-wrap: wrap;
+
+
+}
+
+.emotion-headers{
+
+  display: flex;
+  flex-wrap: wrap;
+  max-width:600px;
+  /* border:1px solid red; */
+  height:40px;
+  word-wrap: break-word;
+  word-break: break-all;
+
+}
+
+[contenteditable] {
+  outline: 0px solid transparent;
+  padding:5%;
+  display:flex;
+  align-items: center;
+  justify-content: flex-start;
+  height:20%;
+}

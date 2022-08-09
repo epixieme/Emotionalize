@@ -24,23 +24,25 @@
       <section class="row">
         <section class="col-12">
          
-          <h2 class ='userInputs' contenteditable="false"><%- emotion.name %></h2>
+          <h2 class ='userInputs emotion-headers' contenteditable="false" ><%- emotion.name %></h2>
         </section>
         <section class="col-12 mb-4">
           <i class="bi bi-tag"></i> 
           <%- emotion.category %>
         </section>
-        <section class="col-12" style="white-space: pre-line">
-          <h4 class="border-bottom border-secondary">Describe Emotion</h4>
-          <p contenteditable="false" class ='userInputs'><%- emotion.description %></p>
+        <section class="col-12" style="white-space: pre-line ">
+          <h4 class="border-bottom border-secondary emotion-headers">Describe Emotion</h4>
+        
+          <p contenteditable="false" class ='userInputs '><%- emotion.description %></p>
+     
         </section>
       </section>
       <section class="row pt-4">
         <section class="col-12">
-          <h4 class="border-bottom border-secondary">Feelings</h4>
+          <h4 class="border-bottom border-secondary emotion-headers">Feelings</h4>
           <ul class="list-group list-group-flush">
             <% emotion.feelings.forEach(function(feeling, index){%>
-            <li class="list-group-item">
+            <li class="list-group-item editfields">
               <p contenteditable="false" class ='userInputs'><%- feeling %></p>
             </li>
             <% }) %>
@@ -50,10 +52,10 @@
       </section>
       <section class="row pt-4">
         <section class="col-12">
-          <h4 class="border-bottom border-secondary mw-50">Record you actions</h4>
+          <h4 class="border-bottom border-secondary mw-50 emotion-headers">Record you actions</h4>
           <ul class="list-group list-group-flush">
             <% emotion.actions.forEach(function(action, index){%>
-            <li class="list-group-item">
+            <li class="list-group-item editfields">
               <p contenteditable="false" class ='actionInputs'><%- action %></p>
             </li>
             <% }) %>
