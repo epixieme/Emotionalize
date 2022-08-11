@@ -102,7 +102,7 @@ async function updateEmotionsInfo() {
 
     actionFields.forEach((item) => {
       item.setAttribute("contenteditable", false);
-      item.style.border = "none";
+      item.style.background= "none";
       item.style.borderRadius = "10px";
     });
   }

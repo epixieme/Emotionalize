@@ -203,8 +203,10 @@ exports.updateEmotion = async (req, res) => {
     // console.log(req.body.nextSteps);
     res.json(data);
   } catch (error) {
+  
     req.flash("infoErrors", error); // do i need to now say if duplicate then show error
     res.status(400).json({ message: error });
+  
   }
 };
 

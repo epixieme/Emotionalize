@@ -10,7 +10,7 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 
 require("dotenv").config();
-app.use(fileUpload());
+app.use(fileUpload());// for local file uploads
 app.use(flash());
 app.use(express.urlencoded({ extended: true })); // helps us pass url data to ejs
 app.use(express.json());
@@ -34,3 +34,4 @@ const routes = require("./server/routes/emotionsRoutes.js");
 
 app.use("/", routes);
 app.listen(port, () => console.log(`listening to port $`));
+
