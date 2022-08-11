@@ -120,10 +120,12 @@ exports.searchEmotion = async (req, res) => {
 exports.submitEmotion = async (req, res) => {
   const infoErrorsObj = req.flash("infoErrors");
   const infoSubmitObj = req.flash("infoSubmit");
+  // const infoUniqueObj = req.flash("infoUnique");
   res.render("submit-emotion", {
     title: "Emotions App - Submit Emotion",
     infoErrorsObj,
     infoSubmitObj,
+    // infoUniqueObj,
   });
 };
 
@@ -166,6 +168,7 @@ exports.submitEmotionOnPost = async (req, res) => {
   } catch (error) {
     // res.json(error) can get the error messages used to populate validation on the submit form using submit-emotion.ejs
     req.flash("infoErrors", error);
+    // req.flash("infoUnique", error);
     res.redirect("/submit-emotion");
   }
 };
@@ -188,6 +191,7 @@ exports.deleteEmotion = async (req, res) => {
 
 exports.updateEmotion = async (req, res) => {
   const id = req.params.id;
+  console.log(req.params.id)
   try {
     const data = await Emotion.updateOne({id},{
       name: req.body.name,
@@ -198,6 +202,7 @@ exports.updateEmotion = async (req, res) => {
     // console.log(req.body.nextSteps);
     res.json(data);
   } catch (error) {
+    req.flash("infoErrors", error); // do i need to now say if duplicate then show error
     res.status(400).json({ message: error });
   }
 };
