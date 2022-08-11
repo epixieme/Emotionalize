@@ -14,3 +14,15 @@ This is a full stack CRUD application intended to record your daily emotions and
 
 </ol>
 
+
+## Installation
+
+If you wish to fork and clone the code then feel free. 
+This is a NODE project so to run it please install node and then install all dependancies by running the following:
+
+<ol>
+
+<li>Run npm install from a terminal</li>
+<li>npm start</li>
+
+</ol>
