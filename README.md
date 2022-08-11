@@ -18,11 +18,12 @@ This is a full stack CRUD application intended to record your daily emotions and
 ## Instructions
 
 If you wish to fork and clone the code then feel free. 
-This is a NODE project so to run it please install node and then install all dependancies by running the following:
+You will need a Mongodb for it to work and a .env file if you wish to keep your connection as a secret.
+This is a NODE project so to run it please install node and then install all dependancies by running the following from a terminal:
 
 <ol>
 
-<li>Run npm install from a terminal</li>
+<li>npm install</li>
 <li>npm start</li>
 
 </ol>
