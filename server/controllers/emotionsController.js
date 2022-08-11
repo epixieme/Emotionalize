@@ -105,6 +105,7 @@ exports.searchEmotion = async (req, res) => {
     let searchTerm = req.body.searchTerm;
     let emotion = await Emotion.find({
       $text: { $search: searchTerm, $diacriticSensitive: true },
+      
     });
     res.render("search", { title: "Emotions App - Search", emotion });
   } catch (error) {
