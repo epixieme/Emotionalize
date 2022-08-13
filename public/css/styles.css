@@ -154,3 +154,8 @@ border:none;
   justify-content: flex-start;
   height:20%;
 }
+
+
+.hidden{
+  display:none
+}
