@@ -84,10 +84,12 @@ async function updateEmotionsInfo() {
   const fields = emotionsVariables();
   const actionFields = actionVariables();
   const target = this;
-  const name = fields[0].innerText;
-  const description = fields[1].innerText;
+  const id = fields[0].innerText;
+  console.log(id)
+  const name = fields[1].innerText;
+  const description = fields[2].innerText;
   const feelings = Array.from(fields)
-    .map((item, index) => (index > 1 ? item.innerText : ""))
+    .map((item, index) => (index > 2 ? item.innerText : ""))
     .filter(String);
 
   const actions = Array.from(actionFields).map((item) => item.innerText);
@@ -112,6 +114,7 @@ async function updateEmotionsInfo() {
       method: "put",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
+        id: id,
         // Send these as a string to the server
         name: name, // have to find a way to update the field on input
         description: description,

@@ -83,7 +83,10 @@ exports.exploreCategoriesById = async (req, res) => {
 
 exports.exploreEmotion = async (req, res) => {
   // renders the page from the emotionsRoutes of homepage
+  let id = req.params.id
+  console.log(req.params.id)
   try {
+  
     let emotionId = req.params.id; // on click of link from home page, gets id from the uri request parameters set in the route. params. An object containing parameter values parsed from the URL path. For example if you have the route /user/:name , then the "name" from the URL path wil be available as req.params.name. Should return one result
     const emotion = await Emotion.findById(emotionId); //use emotion model interface to search emotions collection in mongodb for the id in emotionId
 
@@ -91,6 +94,7 @@ exports.exploreEmotion = async (req, res) => {
   } catch (error) {
     errorHandling(res, error);
   }
+
 };
 
 
@@ -118,7 +122,7 @@ exports.searchEmotion = async (req, res) => {
  * GET/submit
  * submit
  */
-exports.submitEmotion = async (req, res) => {
+exports.submitEmotion = async (req, res) => {// this is for rendering the flash errors on submit
   const infoErrorsObj = req.flash("infoErrors");
   const infoSubmitObj = req.flash("infoSubmit");
   // const infoUniqueObj = req.flash("infoUnique");
@@ -167,6 +171,7 @@ exports.submitEmotionOnPost = async (req, res) => {
     req.flash("infoSubmit", "Emotion has been added");
     res.redirect("/submit-emotion");
   } catch (error) {
+    console.log(error)
     // res.json(error) can get the error messages used to populate validation on the submit form using submit-emotion.ejs
     req.flash("infoErrors", error);
     // req.flash("infoUnique", error);
@@ -191,24 +196,46 @@ exports.deleteEmotion = async (req, res) => {
 };
 
 exports.updateEmotion = async (req, res) => {
-  const id = req.params.id;
-  console.log(req.params.id)
+  const _id = req.body.id
+
   try {
-    const data = await Emotion.updateOne({id},{
+
+    // const data = await Emotion.updateOne({  _id: new ObjectID(request.body.id) },{
+    const data = await Emotion.updateOne({ _id },{
       name: req.body.name,
       description: req.body.description,
       feelings: req.body.feelings,
       actions:req.body.actions,
     });
-    // console.log(req.body.nextSteps);
     res.json(data);
   } catch (error) {
-  
-    req.flash("infoErrors", error); // do i need to now say if duplicate then show error
-    res.status(400).json({ message: error });
+    errorHandling(res, error);
+    // req.flash("infoErrors", error); // do i need to now say if duplicate then show error
+    // res.status(400).json({ message: error });
   
   }
 };
+
+
+
+/**
+ * Use routes/emotionsRoutes
+ * Get/emotions/:id
+ * Emotions
+ */
+
+//  exports.exploreEmotion = async (req, res) => {
+//   // renders the page from the emotionsRoutes of homepage
+//   try {
+//     let emotionId = req.params.id; // on click of link from home page, gets id from the uri request parameters set in the route. params. An object containing parameter values parsed from the URL path. For example if you have the route /user/:name , then the "name" from the URL path wil be available as req.params.name. Should return one result
+//     const emotion = await Emotion.findById(emotionId); //use emotion model interface to search emotions collection in mongodb for the id in emotionId
+
+//     res.render("emotion", { title: "Emotions App - Emotion", emotion }); // render emotion page, homepage title, categories,feelings to category ejs
+//   } catch (error) {
+//     errorHandling(res, error);
+//   }
+// };
+
 
 exports.recentEmotions = async (req,res) => {
   try{

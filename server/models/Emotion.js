@@ -7,7 +7,7 @@ const emotionSchema = new mongoose.Schema({
   name: {
     type: String,
     required: "This field is required",
-    index: { unique: true, sparse: true }
+    // index: { unique: true, sparse: true }
   },
   description: {
     type: String,
@@ -36,6 +36,6 @@ const emotionSchema = new mongoose.Schema({
   },
 });
 
-emotionSchema.index({ name: "text", description: "text" }, { unique: true }); /// index search
+emotionSchema.index({ name: "text", description: "text" }, ); //{ unique: true }/// index search
 //Export the model so it can be reused in other js files
 module.exports = mongoose.model("Emotion", emotionSchema); // interface to the db
