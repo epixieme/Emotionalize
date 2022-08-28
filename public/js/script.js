@@ -126,15 +126,14 @@ async function updateEmotionsInfo() {
     console.log(err);
   }
 }
-async function deleteEmotionsInfo(event) {
-  const target = event.target;
+async function deleteEmotionsInfo() {
+  const fields = emotionsVariables();
 
   // console.log(document.querySelectorAll(".elements")); /// how can I make this section dryer - maybe an object? could I use this query selector and a conidtion? https://bobbyhadz.com/blog/javascript-get-data-attribute-from-event-object
   // grabs all of the dom element (span) innertext for the target
 
   //   const name = target.parentNode.parentNode.childNodes[5].innerText
-  const name =
-    target.parentNode.parentNode.childNodes[1].childNodes[1].innerText;
+  const id = fields[0].innerText;
   console.log(name);
   try {
     const response = await fetch("/delete-emotion", {
@@ -142,7 +141,7 @@ async function deleteEmotionsInfo(event) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         // Send these as a string to the server
-        name: name,
+        id: id,
       }),
     });
     const data = await response.json();
