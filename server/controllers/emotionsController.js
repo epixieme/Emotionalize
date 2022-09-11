@@ -167,7 +167,7 @@ exports.submitEmotionOnPost = async (req, res) => {
     });
 
     await newEmotion.save();
-
+    
     req.flash("infoSubmit", "Emotion has been added");
     res.redirect("/submit-emotion");
   } catch (error) {
@@ -180,7 +180,6 @@ exports.submitEmotionOnPost = async (req, res) => {
 };
 
 /**
-
  * DELETE
  * DELETE
  */
