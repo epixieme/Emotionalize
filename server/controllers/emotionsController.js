@@ -180,7 +180,6 @@ exports.submitEmotionOnPost = async (req, res) => {
 };
 
 /**
-
  * DELETE
  * DELETE
  */
