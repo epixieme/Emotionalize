@@ -84,7 +84,7 @@ exports.exploreCategoriesById = async (req, res) => {
 exports.exploreEmotion = async (req, res) => {
   // renders the page from the emotionsRoutes of homepage
   let id = req.params.id
-  console.log(req.params.id)
+  // console.log(req.params.id)
   try {
   
     let emotionId = req.params.id; // on click of link from home page, gets id from the uri request parameters set in the route. params. An object containing parameter values parsed from the URL path. For example if you have the route /user/:name , then the "name" from the URL path wil be available as req.params.name. Should return one result
