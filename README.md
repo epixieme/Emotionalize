@@ -1,6 +1,6 @@
 # Emotionalize
 
-live:Live App: https://ill-pear-walrus-tutu.cyclic.app/
+Live App: https://ill-pear-walrus-tutu.cyclic.app/
 
 This is a full stack CRUD application intended to record your daily emotions and actions to manage negative emotions or help persist positive emotions.  
 
